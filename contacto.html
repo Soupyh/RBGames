@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - RBGames</title>
+    <link rel="stylesheet" href="./assets/CSS/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header compartido -->
+    <header data-shared></header>
+
+    <main class="container">
+        <h1>Contacto</h1>
+        <form id="contact-form">
+            <div>
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <!-- Footer compartido -->
+    <footer data-shared>
+        <p>&copy; 2025 RBGames. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script que construye header/footer -->
+    <script type="module" src="assets/JS/shared-header-footer.js"></script>
+</body>
+</html>

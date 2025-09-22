@@ -181,7 +181,7 @@ button[type=\"submit\"]:hover {
   }
 }
 /* Menú horizontal para nav-links */
-.nav-links {
+.menu {
   display: flex;
   gap: 2rem;
   list-style: none;
@@ -189,18 +189,190 @@ button[type=\"submit\"]:hover {
   align-items: center;
   padding: 0;
 }
-.nav-links li {
+.menu li {
   display: inline-block;
 }
-/* Tamaño del logo */
-.logo {
-  height: 100px;
-  width: auto;
-  display: block;
-  margin: 0 12px;
-  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.12);
-  border-radius: 6px;
+.menu a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
 }
+
+/* ====== Soporte para header/footer compartidos ====== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  height: 64px; /* ya tenías .logo, aquí lo moderamos para el header */
+  width: auto;
+}
+
+/* Menú horizontal (compat con shared-header-footer.js) */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav a:hover {
+  color: #fbbf24;
+}
+
+/* Carrito en header */
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0ea5e9;
+  color: #0f172a;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.cart-link:hover {
+  filter: brightness(1.1);
+}
+
+/* Contador del carrito (en el header) */
+#cart-count {
+  display: inline-block;
+  min-width: 22px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #fbbf24;
+  color: #0f172a;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+/* ====== Alias para que coincidan tus páginas ====== */
+/* Lo que tengas con .grid se verá como tu .product-grid */
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Cada .producto se verá como tus tarjetas .product-card */
+.producto {
+  background: #0f172a;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.producto:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.18);
+}
+.producto img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: #334155;
+}
+
+/* Título/precio dentro de .producto */
+.producto h3 { 
+  color: #f1f5f9; 
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.producto .precio {
+  color: #fbbf24;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Botón "Añadir al carrito" compat con tu estilo .add-to-cart */
+.btn-add, .add-to-cart {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-add:hover, .add-to-cart:hover {
+  background: #fbbf24;
+  color: #0f172a;
+}
+
+/* ====== Tabla del carrito (#carrito-lista) ====== */
+.tabla-carrito {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tabla-carrito th, .tabla-carrito td {
+  border-bottom: 1px solid #1e293b;
+  padding: 12px 14px;
+  text-align: left;
+  color: #f1f5f9;
+}
+.tabla-carrito thead th {
+  background: #1e293b;
+  color: #38bdf8;
+}
+.tabla-carrito tfoot td {
+  font-weight: 700;
+  background: #1e293b;
+}
+.tabla-carrito button {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.tabla-carrito button:hover {
+  filter: brightness(1.1);
+}
+
+/* ====== Ajustes responsive del header compartido ====== */
+@media (max-width: 768px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 
 
 
