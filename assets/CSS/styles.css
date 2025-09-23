@@ -1,5 +1,4 @@
-/* Reset básico */
-
+/* ==================== RESET BÁSICO ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +12,7 @@ body {
   min-height: 100vh;
 }
 
+/* ==================== HEADER ==================== */
 header {
   background: #0f172a;
   color: #38bdf8;
@@ -21,25 +21,28 @@ header {
   box-shadow: 0 2px 8px rgba(30, 41, 59, 0.2);
 }
 
-nav {
+/* ==================== NAVEGACIÓN ==================== */
+nav, .menu, .nav ul {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
+  list-style: none;
   background: #1e293b;
   padding: 1rem 0;
 }
 
-nav a {
+nav a, .menu a, .nav a {
   color: #38bdf8;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s;
 }
-
-nav a:hover {
+nav a:hover, .menu a:hover, .nav a:hover {
   color: #fbbf24;
 }
 
+/* ==================== CONTENEDORES ==================== */
 .main-container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -49,157 +52,6 @@ nav a:hover {
   box-shadow: 0 4px 24px rgba(30, 41, 59, 0.3);
 }
 
-h1, h2, h3 {
-  color: #38bdf8;
-  margin-bottom: 1rem;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.product-card {
-  background: #0f172a;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.08);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.18);
-}
-
-.product-card img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  border-radius: 0.5rem;
-  background: #334155;
-}
-
-.product-title {
-  font-size: 1.2rem;
-  color: #f1f5f9;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.product-price {
-  color: #fbbf24;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.add-to-cart {
-  background: #38bdf8;
-  color: #0f172a;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-.add-to-cart:hover {
-  background: #fbbf24;
-  color: #0f172a;
-}
-
-footer {
-  background: #0f172a;
-  color: #94a3b8;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-  border-radius: 0.5rem;
-}
-
-/* Estilos para formularios */
-form {
-  background: #1e293b;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.08);
-  max-width: 500px;
-  margin: 2rem auto;
-}
-
-input, textarea, select {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  background: #334155;
-  color: #f1f5f9;
-  font-size: 1rem;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: 2px solid #38bdf8;
-}
-
-button[type=\"submit\"] {
-  background: #38bdf8;
-  color: #0f172a;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-button[type=\"submit\"]:hover {
-  background: #fbbf24;
-  color: #0f172a;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .main-container {
-    padding: 1rem;
-  }
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  form {
-    padding: 1rem;
-  }
-}
-/* Menú horizontal para nav-links */
-.menu {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-.menu li {
-  display: inline-block;
-}
-.menu a {
-  color: #38bdf8;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-/* ====== Soporte para header/footer compartidos ====== */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -214,65 +66,23 @@ button[type=\"submit\"]:hover {
 }
 
 .logo {
-  height: 64px; /* ya tenías .logo, aquí lo moderamos para el header */
+  height: 64px;
   width: auto;
 }
 
-/* Menú horizontal (compat con shared-header-footer.js) */
-.nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav a {
+/* ==================== TITULOS ==================== */
+h1, h2, h3 {
   color: #38bdf8;
-  text-decoration: none;
-  font-weight: 600;
-}
-.nav a:hover {
-  color: #fbbf24;
+  margin-bottom: 1rem;
 }
 
-/* Carrito en header */
-.cart-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #0ea5e9;
-  color: #0f172a;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-}
-.cart-link:hover {
-  filter: brightness(1.1);
-}
-
-/* Contador del carrito (en el header) */
-#cart-count {
-  display: inline-block;
-  min-width: 22px;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: #fbbf24;
-  color: #0f172a;
-  text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.2;
-}
-
-/* ====== Alias para que coincidan tus páginas ====== */
-/* Lo que tengas con .grid se verá como tu .product-grid */
-.grid { 
+/* ==================== PRODUCTOS ==================== */
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
 
-/* Cada .producto se verá como tus tarjetas .product-card */
 .producto {
   background: #0f172a;
   border-radius: 1rem;
@@ -295,9 +105,7 @@ button[type=\"submit\"]:hover {
   border-radius: 0.5rem;
   background: #334155;
 }
-
-/* Título/precio dentro de .producto */
-.producto h3 { 
+.producto h3 {
   color: #f1f5f9; 
   margin: 0.5rem 0;
   text-align: center;
@@ -309,8 +117,8 @@ button[type=\"submit\"]:hover {
   margin-bottom: 1rem;
 }
 
-/* Botón "Añadir al carrito" compat con tu estilo .add-to-cart */
-.btn-add, .add-to-cart {
+/* ==================== BOTONES ==================== */
+.btn-add, .add-to-cart, button[type="submit"] {
   background: #38bdf8;
   color: #0f172a;
   border: none;
@@ -321,12 +129,72 @@ button[type=\"submit\"]:hover {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
-.btn-add:hover, .add-to-cart:hover {
+.btn-add:hover, .add-to-cart:hover, button[type="submit"]:hover {
   background: #fbbf24;
   color: #0f172a;
 }
 
-/* ====== Tabla del carrito (#carrito-lista) ====== */
+/* ==================== FORMULARIOS ==================== */
+form {
+  background: #1e293b;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(56, 189, 248, 0.08);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #334155;
+  color: #f1f5f9;
+  font-size: 1rem;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid #38bdf8;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+  background: #0f172a;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
+}
+
+/* ==================== CARRITO ==================== */
+.cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0ea5e9;
+  color: #0f172a;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.cart-link:hover {
+  filter: brightness(1.1);
+}
+
+#cart-count {
+  display: inline-block;
+  min-width: 22px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #fbbf24;
+  color: #0f172a;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
 .tabla-carrito {
   width: 100%;
   border-collapse: collapse;
@@ -361,18 +229,10 @@ button[type=\"submit\"]:hover {
   filter: brightness(1.1);
 }
 
-/* ====== Ajustes responsive del header compartido ====== */
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
-  .nav {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .main-container, form { padding: 1rem; }
+  .grid { grid-template-columns: 1fr; gap: 1rem; }
+  .nav { flex-wrap: wrap; gap: 12px; }
+  .nav ul { flex-wrap: wrap; justify-content: center; }
 }
-
-
-
-
