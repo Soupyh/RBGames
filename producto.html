@@ -6,19 +6,18 @@
   <title>Productos — RBGames</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./assets/CSS/styles.css" />
+  <link rel="stylesheet" href="assets/CSS/styles.css" />
 
   <!-- Iconos (opcional) -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <!-- Catálogo opcional -->
-  <script src="./data/products.js" defer></script>
+  <!-- Catálogo (si existe) -->
+  <script src="data/products.js" defer></script>
 </head>
 <body>
-  <!-- Header compartido (lo llena shared-header-footer.js) -->
+  <!-- Header compartido -->
   <header data-shared></header>
 
-  
   <main class="container">
     <h1>Productos</h1>
 
@@ -33,56 +32,45 @@
   <!-- Footer compartido -->
   <footer data-shared></footer>
 
-  <!-- Scripts de la app -->
-  <!-- 1) Header/Footer compartidos -->
-  <script type="module" src="./assets/JS/shared-header-footer.js"></script>
+  <!-- Header/Footer -->
+  <script src="assets/JS/shared-header-footer.js"></script>
 
-  <!-- 2) Utilidades del carrito -->
-  <script type="module" src="./assets/JS/cart.js"></script>
-
-  <!-- 3) Lógica específica de esta página -->
-  <script type="module">
-    import { addToCart, renderCart, updateCartBadge } from "./assets/JS/cart.js";
-
-    // Renderiza tarjetas en #products-grid si existe window.products (de data/products.js)
+  <script src="assets/JS/cart-global.js"></script>
+  <script>
     function renderProducts() {
       const grid = document.getElementById("products-grid");
       if (!grid) return;
-
       const list = (window.products && Array.isArray(window.products)) ? window.products : [];
-      if (!list.length) return;
-
+      if (!list.length) { grid.innerHTML = "<p>No hay productos para mostrar.</p>"; return; }
       grid.innerHTML = list.map(p => `
         <article class="producto" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}">
-          <img src="${p.image || './assets/IMG/LogoRbGames.png'}" alt="${p.name}">
+          <img src="${p.image || 'assets/IMG/LogoRbGames.png'}" alt="${p.name}">
           <h3>${p.name}</h3>
           <p class="precio">${Number(p.price || 0).toLocaleString('es-CL',{style:'currency',currency:'CLP'})}</p>
           <button class="btn-add">Añadir al carrito</button>
-        </article>
-      `).join("");
+        </article>`).join("");
     }
-
-    function wireAddButtons() {
+    function bindButtons() {
       document.querySelectorAll(".btn-add").forEach(btn => {
         btn.addEventListener("click", () => {
-          const card  = btn.closest(".producto");
+          const card = btn.closest(".producto");
           if (!card) return;
-          const id    = card.dataset.id;
-          const name  = card.dataset.name || ("Producto " + id);
+          const id = card.dataset.id;
+          const name = card.dataset.name || ("Producto " + id);
           const price = Number(card.dataset.price || 0);
-          addToCart(id, 1, { name, price });
-          renderCart("#carrito-lista");
+          window.RB.addToCart(id, 1, { name, price });
+          window.RB.renderCart("#carrito-lista");
+          window.RB.updateCartBadge();
         });
       });
     }
-
-    // Render inicial del carrito, el badge del header y (si hay) los productos
     document.addEventListener("DOMContentLoaded", () => {
       renderProducts();
-      updateCartBadge();
-      renderCart("#carrito-lista");
-      wireAddButtons();
+      window.RB.renderCart("#carrito-lista");
+      window.RB.updateCartBadge();
+      bindButtons();
     });
   </script>
+
 </body>
 </html>
