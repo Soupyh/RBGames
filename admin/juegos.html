@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Juegos</title>
+  <link rel="stylesheet" href="./css/admin.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body data-page="juegos">
+  <aside class="sidebar">
+    <div class="brand"><span class="dot"></span> RBGames - Admin</div>
+    <nav>
+      <a href="./index.html" class="nav-item"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="./juegos.html" class="nav-item active"><i class="fa-solid fa-gamepad"></i> Juegos</a>
+      <a href="./usuarios.html" class="nav-item"><i class="fa-solid fa-users"></i> Usuarios</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h1>Gestión de Juegos</h1>
+      <button id="btn-nuevo-juego" class="btn icon"><i class="fa-solid fa-plus"></i> Nuevo Juego</button>
+    </header>
+
+    <div class="toolbar">
+      <div class="tools-left">
+        <div class="input"><i class="fa-solid fa-magnifying-glass"></i><input id="q-juego" placeholder="Buscar por código o título"/></div>
+        <select id="pp-juego" class="select">
+          <option value="5">5 / página</option>
+          <option value="10" selected>10 / página</option>
+          <option value="20">20 / página</option>
+        </select>
+      </div>
+    </div>
+
+    <section class="card">
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th><th>Título</th><th>Género</th><th>Plataforma</th><th>Precio</th><th>Stock</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-juegos"></tbody>
+        </table>
+      </div>
+      <div class="pager" id="pager-juego"></div>
+    </section>
+
+    <dialog id="dlg-juego" class="dialog">
+      <form id="frm-juego" method="dialog" class="form">
+        <h2 id="dlg-title-juego">Nuevo Juego</h2>
+        <div class="grid-form">
+          <label>Código*<input name="codigo" required/></label>
+          <label>Título*<input name="titulo" required/></label>
+          <label>Género*<select name="genero" required></select></label>
+          <label>Plataforma*<select name="plataforma" required></select></label>
+          <label>Precio*<input type="number" name="precio" required/></label>
+          <label>Stock*<input type="number" name="stock" required/></label>
+          <label>Stock Crítico<input type="number" name="stockCritico"/></label>
+          <label class="full">Descripción<textarea name="descripcion" maxlength="500"></textarea></label>
+          <label class="full">Imagen URL<input name="imagen"/></label>
+        </div>
+        <div id="errors-juego" class="errors" hidden></div>
+        <menu class="actions">
+          <button type="reset" class="btn ghost" id="btn-cancelar-juego">Cancelar</button>
+          <button class="btn" id="btn-guardar-juego">Guardar</button>
+        </menu>
+        <input type="hidden" name="__editIndex" />
+      </form>
+    </dialog>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="./js/admin.js" defer></script>
+</body>
+</html>
