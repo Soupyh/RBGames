@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (header) {
     header.innerHTML = `
       <div class="container nav">
-        <a class="logo" href="${H("index.html")}">RBGames</a>
+        <IMG src="./assets/IMG/LogoRbGames.png" alt="Logo de RBGames" class="logo">
         <nav>
           <ul>
             <li><a data-link="index.html"    href="${H("index.html")}">Inicio</a></li>

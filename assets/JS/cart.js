@@ -30,9 +30,12 @@ export function addToCart(id, qty=1, extraData={}) {
   setCart(cart);
 }
 
-export function removeFromCart(id) {
+export function removeFromCart(id, containerSelector="#carrito-lista") {
   setCart(getCart().filter(i => i.id !== id));
+  renderCart(containerSelector);
+  updateCartBadge();
 }
+
 
 export function clearCart() {
   setCart([]);
@@ -65,7 +68,7 @@ export function renderCart(containerSelector="#carrito-lista") {
     </table>`;
 
   cont.querySelectorAll("[data-remove]").forEach(btn => {
-    btn.addEventListener("click", () => removeFromCart(btn.dataset.remove));
+    btn.addEventListener("click", () => removeFromCart(btn.dataset.remove, containerSelector));
   });
 }
 
