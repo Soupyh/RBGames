@@ -7,31 +7,70 @@
     <link rel="stylesheet" href="./assets/CSS/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="./assets/IMG/LogoRbGames.png" alt="Logo de RBGames" class="logo">
+        <header>
+            <div class="container nav">
+                <IMG src="./assets/IMG/LogoRbGames.png" alt="Logo de RBGames" class="logo">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="producto.html">Productos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="registro.html">Registro</a></li>
+                    </ul>
+                </nav>
+                <a class="cart-link" href="producto.html">🛒 <span id="cart-count">0</span></a>
             </div>
-            
-            <h1 class="titulo">RBGames</h1>
-            
-        </nav>
-    </header>
+        </header>
 
     <main>
         <section class="login">
             <h1 style="text-align: center;">Iniciar Sesión</h1>
-            <form action="#" method="POST">
-                <input type="email" placeholder="Correo Electrónico" required>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit" class="btn">Iniciar Sesión</button>
-            </form>
+                        <form id="login-form" action="#" method="POST">
+                                <input type="email" name="email" placeholder="Correo Electrónico" required>
+                                <input type="password" name="password" placeholder="Contraseña" required>
+                                <button type="submit" class="btn">Iniciar Sesión</button>
+                        </form>
+                                    <div id="login-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:9999;align-items:center;justify-content:center;">
+                                        <div style="background:#fff;padding:2.5rem 2.5rem;border-radius:1rem;max-width:400px;margin:auto;text-align:center;box-shadow:0 8px 32px #0003;">
+                                            <div style="font-size:4rem;color:#4ade80;margin-bottom:1rem;">
+                                                <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="32" cy="32" r="30" stroke="#4ade80" stroke-width="4" fill="#f0fdf4"/>
+                                                    <path d="M20 34L30 44L44 24" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+                                            <h2 style="color:#222;font-size:2rem;margin-bottom:1rem;font-weight:700;">¡Login exitoso!</h2>
+                                            <p style="font-size:1.1rem;color:#444;margin-bottom:1.5rem;">TU CUENTA HA INICIADO SESIÓN CORRECTAMENTE.</p>
+                                            <button id="login-ok" style="margin-top:1rem;padding:0.6rem 2rem;background:#6366f1;color:#fff;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;font-size:1rem;">OK</button>
+                                        </div>
+                                    </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 RBGames. Todos los derechos reservados.</p>
     </footer>
-        <script src="assets/JS/validaciones-avanzadas.js"></script>
+                <script src="assets/JS/validaciones-avanzadas.js"></script>
+                <script>
+                document.addEventListener("DOMContentLoaded",()=>{
+                    const form = document.getElementById("login-form");
+                    const modal = document.getElementById("login-modal");
+                    const okBtn = document.getElementById("login-ok");
+                    if(form && modal && okBtn){
+                        form.addEventListener("submit",e=>{
+                            e.preventDefault();
+                            if(window.validarLogin && window.validarLogin(form)){
+                                modal.style.display = "flex";
+                            }
+                        });
+                        okBtn.addEventListener("click",()=>{
+                            modal.style.display = "none";
+                            // Aquí puedes redirigir o limpiar el formulario si lo deseas
+                        });
+                    }
+                });
+                </script>
 </body>
 </html>

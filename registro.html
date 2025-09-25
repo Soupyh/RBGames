@@ -5,38 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - RBGames</title>
     <link rel="stylesheet" href="./assets/CSS/styles.css">
+    
+    <script type="module" src="assets/JS/shared-header-footer.js"></script>
 </head>
 <body>
 
-    <!-- Header compartido -->
-    
-    <header data-shared>
-        
-    </header>
+        <header>
+            <div class="container nav">
+                <IMG src="./assets/IMG/LogoRbGames.png" alt="Logo de RBGames" class="logo">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="producto.html">Productos</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        
+                    </ul>
+                </nav>
+                <a class="cart-link" href="producto.html">🛒 <span id="cart-count">0</span></a>
+            </div>
+        </header>
     
     <main class="container">
     <h1>Registro de Usuario</h1>
-    <form action="/registro" method="POST">
-        <label for="username">Nombre de Usuario:</label>
-        <input type="text" id="username" name="username" required>
+        <form id="registro-form" action="#" method="POST">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" name="username" required>
 
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
 
-        <button type="submit">Registrarse</button>
-    </form>
+                <button type="submit">Registrarse</button>
+        </form>
+        <div id="registro-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:9999;align-items:center;justify-content:center;">
+            <div style="background:#fff;padding:2.5rem 2.5rem;border-radius:1rem;max-width:400px;margin:auto;text-align:center;box-shadow:0 8px 32px #0003;">
+                <div style="font-size:4rem;color:#4ade80;margin-bottom:1rem;">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" stroke="#4ade80" stroke-width="4" fill="#f0fdf4"/>
+                        <path d="M20 34L30 44L44 24" stroke="#22c55e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 style="color:#222;font-size:2rem;margin-bottom:1rem;font-weight:700;">¡Registro exitoso!</h2>
+                <p style="font-size:1.1rem;color:#444;margin-bottom:1.5rem;">TU CUENTA HA SIDO CREADA CORRECTAMENTE.</p>
+                <button id="registro-ok" style="margin-top:1rem;padding:0.6rem 2rem;background:#6366f1;color:#fff;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;font-size:1rem;">OK</button>
+            </div>
+        </div>
 
 
     <footer data-shared>&copy; 2025 RBGames — Todos los derechos reservados.</footer>
-        <script src="assets/JS/validaciones-avanzadas.js"></script>
+                <script src="assets/JS/validaciones-avanzadas.js"></script>
+                <script>
+                document.addEventListener("DOMContentLoaded",()=>{
+                    const form = document.getElementById("registro-form");
+                    const modal = document.getElementById("registro-modal");
+                    const okBtn = document.getElementById("registro-ok");
+                    if(form && modal && okBtn){
+                        form.addEventListener("submit",e=>{
+                            e.preventDefault();
+                            // Aquí puedes usar tu validación avanzada si lo deseas
+                            if(form.username.value.trim() && form.email.value.trim() && form.password.value.trim()){
+                                modal.style.display = "flex";
+                            }
+                        });
+                        okBtn.addEventListener("click",()=>{
+                            modal.style.display = "none";
+                            // Aquí puedes limpiar el formulario si lo deseas
+                        });
+                    }
+                });
+                </script>
 </body>
 </html>
 
-    <!-- Footer compartido -->
+    
     
 
-    <!-- Script que construye header/footer -->
-    <script type="module" src="assets/JS/shared-header-footer.js"></script>
+    
