@@ -1,4 +1,3 @@
-// Validaciones avanzadas para todos los formularios
 export const allowedDomains = ["duoc.cl","profesor.duoc.cl","gmail.com"];
 export function emailDomainOk(value){
   const m = String(value||"").trim().match(/^[^@]+@([^@]+\.[^@]+)$/i);
