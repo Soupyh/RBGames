@@ -1,23 +1,13 @@
-// assets/JS/shared-header-footer.js
-document.addEventListener("DOMContentLoaded", () => {
-  // --- Cálculo de base para rutas relativas ---
+document.addEventListener("DOMContentLoaded", () => {  
   function computeBase() {
-    // Normaliza slashes para file:// y http://
     const p = location.pathname.replace(/\\/g, "/");
     const dirs = p.split("/").filter(Boolean);
-    // Quitamos el archivo (último segmento)
     dirs.pop();
-
-    // Si estás dentro de /admin/... sube un nivel
     if (dirs.includes("admin")) return "../";
-
-    // Para tus páginas en raíz (index.html, producto.html, etc.) no hace falta subir
     return "";
   }
   const base = computeBase();
-
-  // Helpers
-  const H = (p) => `${base}${p}`;  // construye hrefs relativos
+  const H = (p) => `${base}${p}`;  
   const getCart = () => {
     try { return JSON.parse(localStorage.getItem("cart") || "[]"); }
     catch { return []; }
@@ -30,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = String(total);
   };
 
-  // --- Inyección de Header / Footer ---
+  
   const header = document.querySelector("header[data-shared]");
   const footer = document.querySelector("footer[data-shared]");
 
@@ -60,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>`;
   }
 
-  // --- Marcar link activo ---
+  
   (function markActive() {
     const path = location.pathname.replace(/\\/g, "/");
     const current = (path.split("/").pop() || "index.html") || "index.html";
@@ -72,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  // --- Badge inicial ---
   updateBadge();
 
   // --- Refrescar badge cuando cambia el carrito (misma o distinta pestaña) ---
