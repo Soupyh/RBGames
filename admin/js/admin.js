@@ -1,4 +1,4 @@
-/* Simplificado: juegos y usuarios adaptados RBGames */
+
 const KS = { juegos: "rb_admin_juegos", usuarios: "rb_admin_usuarios" };
 const getArr = (k) => JSON.parse(localStorage.getItem(k) || "[]");
 const setArr = (k, v) => localStorage.setItem(k, JSON.stringify(v));
